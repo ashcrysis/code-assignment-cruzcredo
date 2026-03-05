@@ -20,6 +20,10 @@ namespace Player.States
         public override void Update()
         {
             timer -= Time.deltaTime;
+            
+            string stateName = GetType().Name.Replace("State", "");
+            player.anim.SetBool(stateName, true);
+            
 
             player.Rb.linearVelocity = dashDir * player.Stats.dashSpeed;
 

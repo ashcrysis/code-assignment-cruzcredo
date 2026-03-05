@@ -16,6 +16,9 @@ namespace Player.States
             timer = player.Stats.attackDuration;
             player.Stop();
             player.AttackHitbox.SetActive(true);
+            
+            string stateName = GetType().Name.Replace("State", "");
+            player.anim.SetBool(stateName, true);
         }
 
         public override void Update()

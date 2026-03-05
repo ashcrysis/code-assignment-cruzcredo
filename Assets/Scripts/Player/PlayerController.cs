@@ -21,6 +21,8 @@ namespace Player
         public CombatState CombatState;
         public DashState DashState;
         public GameObject AttackHitbox;
+        public Animator anim;
+        
         void Awake()
         {
             Rb = GetComponent<Rigidbody2D>();
