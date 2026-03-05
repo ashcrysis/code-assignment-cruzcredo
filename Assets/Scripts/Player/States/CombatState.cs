@@ -17,7 +17,6 @@ namespace Player.States
             player.Stop();
             player.AttackHitbox.SetActive(true);
             
-            string stateName = GetType().Name.Replace("State", "");
             player.anim.SetBool(stateName, true);
         }
 

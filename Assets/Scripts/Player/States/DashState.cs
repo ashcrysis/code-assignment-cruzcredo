@@ -21,7 +21,6 @@ namespace Player.States
         {
             timer -= Time.deltaTime;
             
-            string stateName = GetType().Name.Replace("State", "");
             player.anim.SetBool(stateName, true);
             
 

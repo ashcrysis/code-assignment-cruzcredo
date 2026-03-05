@@ -4,22 +4,22 @@ namespace Player.States
     {
         protected PlayerController player;
         protected PlayerStateMachine stateMachine;
-        
+        protected string stateName;
+
         public PlayerState(PlayerController player, PlayerStateMachine stateMachine)
         {
             this.player = player;
             this.stateMachine = stateMachine;
+            stateName = GetType().Name.Replace("State", "");
         }
 
         public virtual void Enter()
         {
-            string stateName = GetType().Name.Replace("State", "");
             player.anim.SetBool(stateName, true);
         }
 
         public virtual void Exit()
         {
-            string stateName = GetType().Name.Replace("State", "");
             player.anim.SetBool(stateName, false);
         }
         public virtual void Update() { }
