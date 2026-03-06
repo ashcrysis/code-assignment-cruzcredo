@@ -630,7 +630,6 @@ GameObject:
   - component: {fileID: 1327173207}
   - component: {fileID: 1327173210}
   - component: {fileID: 1327173209}
-  - component: {fileID: 1327173211}
   - component: {fileID: 1327173212}
   - component: {fileID: 1327173213}
   m_Layer: 0
@@ -726,7 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa2ced760ee4820985b44dcb1661f3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Damageable
-  Health: 8
+  Health: 5
 --- !u!61 &1327173210
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -773,19 +772,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.87, y: 2.28}
   m_EdgeRadius: 0
---- !u!114 &1327173211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1327173206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6211787d80a940caa0b3c8089ddf6e34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Combat.Hitbox
-  Stats: {fileID: 0}
 --- !u!95 &1327173212
 Animator:
   serializedVersion: 7
