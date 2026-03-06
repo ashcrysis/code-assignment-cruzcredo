@@ -1,5 +1,4 @@
 using Player;
-using Player.States;
 using UnityEngine;
 
 namespace Player.States
@@ -15,6 +14,8 @@ namespace Player.States
         {
             player.Move();
 
+            Flip();
+
             if (player.Input.MoveInput == Vector2.zero)
                 stateMachine.ChangeState(player.IdleState);
 
@@ -23,6 +24,17 @@ namespace Player.States
 
             if (player.Input.DashPressed)
                 stateMachine.ChangeState(player.DashState);
+        }
+
+        void Flip()
+        {
+            float x = player.Input.MoveInput.x;
+
+            if (x == 0) return;
+
+            Vector3 scale = player.transform.localScale;
+            scale.x = Mathf.Sign(x) * Mathf.Abs(scale.x);
+            player.transform.localScale = scale;
         }
     }
 }

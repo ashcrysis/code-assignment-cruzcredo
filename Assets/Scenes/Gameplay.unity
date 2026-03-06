@@ -226,7 +226,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 6.97
+  orthographic size: 8.38
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -333,7 +333,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 6.97
+    OrthographicSize: 8.38
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -584,6 +584,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7784467066616423660, guid: 8f14e318c849fd148a382e8c3057c533, type: 3}
   m_PrefabInstance: {fileID: 262509403097745569}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1273489903 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5386162768357866960, guid: 8f14e318c849fd148a382e8c3057c533, type: 3}
+  m_PrefabInstance: {fileID: 262509403097745569}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7701d6f07c80490fb635417d737df03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.Player.PlayerStats
 --- !u!1 &1327173206
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,7 +701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa2ced760ee4820985b44dcb1661f3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat.Damageable
-  Health: 5
+  Health: 8
 --- !u!61 &1327173210
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -925,6 +936,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8484649693301115625, guid: 8f14e318c849fd148a382e8c3057c533, type: 3}
+      propertyPath: Stats
+      value: 
+      objectReference: {fileID: 1273489903}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

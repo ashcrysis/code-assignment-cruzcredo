@@ -19,7 +19,14 @@ namespace Combat
 
             if (damageable != null)
             {
-                damageable.TakeDamage(Stats.attackDamage);
+                int damage;
+
+                if (Stats.currentCombo == Stats.maxCombo)
+                    damage = Stats.comboDamage;
+                else
+                    damage = Stats.attackDamage;
+
+                damageable.TakeDamage(damage);
             }
         }
     }

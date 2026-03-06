@@ -19,6 +19,10 @@ namespace Player
             [Header("Timing")]
             public float attackDuration = 0.3f;
             public float comboResetTime = 0.5f;
+            public int currentCombo = 0;
+            public int maxCombo = 3;
+
+            public float comboTimer;
         }
     }
 }

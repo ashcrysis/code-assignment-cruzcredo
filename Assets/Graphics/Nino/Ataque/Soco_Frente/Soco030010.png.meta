@@ -130,10 +130,10 @@ TextureImporter:
         serializedVersion: 2
         x: 399
         y: 317
-        width: 300
+        width: 475
         height: 322
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,99 +146,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Soco030010_1
-      rect:
-        serializedVersion: 2
-        x: 711
-        y: 507
-        width: 59
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1e871f5a050396760800000000000000
-      internalID: 7451540181400778977
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soco030010_2
-      rect:
-        serializedVersion: 2
-        x: 797
-        y: 512
-        width: 20
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 902e12178f6973da0800000000000000
-      internalID: -5965133187634830839
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soco030010_3
-      rect:
-        serializedVersion: 2
-        x: 685
-        y: 407
-        width: 44
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9183160712cfd4860800000000000000
-      internalID: 7515940573700765721
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soco030010_4
-      rect:
-        serializedVersion: 2
-        x: 694
-        y: 422
-        width: 181
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b8d46d197423628b0800000000000000
-      internalID: -5177395438644998773
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 050e8aeea2fe6ed4399da7f60671d524
     internalID: 0
     vertices: []
     indices: 
@@ -253,6 +165,7 @@ TextureImporter:
       Soco030010_2: -5965133187634830839
       Soco030010_3: 7515940573700765721
       Soco030010_4: -5177395438644998773
+      Soco030010_5: 489617473
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
