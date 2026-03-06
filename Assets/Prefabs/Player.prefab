@@ -205,8 +205,11 @@ MonoBehaviour:
   attackDamage: 1
   comboDamage: 2
   maxComboAttacks: 2
-  attackDuration: 0.3
-  comboResetTime: 0.5
+  attackDuration: 0.5
+  comboResetTime: 0.45
+  currentCombo: 0
+  maxCombo: 3
+  comboTimer: 0
 --- !u!1 &3710318459060251264
 GameObject:
   m_ObjectHideFlags: 0
