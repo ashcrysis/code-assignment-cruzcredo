@@ -32,9 +32,8 @@ namespace Player.States
 
             if (x == 0) return;
 
-            Vector3 scale = player.transform.localScale;
-            scale.x = Mathf.Sign(x) * Mathf.Abs(scale.x);
-            player.transform.localScale = scale;
+            if (x != 0)
+                player.sr.flipX = x < 0;
         }
     }
 }

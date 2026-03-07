@@ -29,7 +29,7 @@ namespace Player
         [HideInInspector] public DashState DashState;
         
         [HideInInspector] public Vector2 LastMoveDirection = Vector2.right;
-        
+        public SpriteRenderer sr;
         void Awake()
         {
             Rb = GetComponent<Rigidbody2D>();
@@ -37,6 +37,8 @@ namespace Player
             Stats = GetComponent<PlayerStats>();
 
             StateMachine = new PlayerStateMachine();
+            
+            sr = GetComponent<SpriteRenderer>();
 
             IdleState = new IdleState(this, StateMachine);
             MoveState = new MoveState(this, StateMachine);
@@ -78,31 +80,36 @@ namespace Player
         }
         public void UpdateAttackDirection()
         {
-            // ATAQUE DIRECIONAL
+            bool facingLeft = sr.flipX;
+
             if (GameSettings.DirectionalAttack)
             {
-                Vector2 dir = Input.MoveInput;
+                Vector2 dir = LastMoveDirection;
 
                 if (dir == Vector2.zero)
                     dir = LastMoveDirection;
 
+                if (Stats.currentCombo == Stats.maxCombo && dir != Vector2.down)
+                    dir = Vector2.up;
+                
+
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
                 AttackHitbox.transform.rotation = Quaternion.Euler(0, 0, angle);
 
                 if (dir.x != 0)
-                    transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
+                    sr.flipX = dir.x < 0;
             }
-
-            // SISTEMA ORIGINAL
             else
             {
                 if (Stats.currentCombo == Stats.maxCombo)
                 {
-                    AttackHitbox.transform.rotation = Quaternion.Euler(0, 0, 90);
+                    AttackHitbox.transform.rotation = Quaternion.Euler(0, 0, 90f);
                 }
                 else
                 {
-                    AttackHitbox.transform.rotation = Quaternion.identity;
+                    float angle = facingLeft ? 180f : 0f;
+                    AttackHitbox.transform.rotation = Quaternion.Euler(0, 0, angle);
                 }
             }
         }
