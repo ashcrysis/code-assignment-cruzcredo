@@ -60,6 +60,8 @@ namespace Player
 
         public void Move()
         {
+            if (Stats.IsKnockedBack) return;
+
             if (Input.MoveInput != Vector2.zero)
                 LastMoveDirection = Input.MoveInput.normalized;
 

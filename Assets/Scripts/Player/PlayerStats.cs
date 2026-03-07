@@ -34,6 +34,7 @@ namespace Player
 
             [Header("Knockback")]
             public float knockbackForce = 6f;
+            public bool IsKnockedBack;
             public float knockbackDuration = 0.2f;
 
             PlayerController controller;
@@ -70,7 +71,17 @@ namespace Player
 
                 controller.Rb.linearVelocity = Vector2.zero;
                 controller.Rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
-                StartCoroutine(ResetKnockback());
+
+                StartCoroutine(KnockbackRoutine());
+            }
+            IEnumerator KnockbackRoutine()
+            {
+                IsKnockedBack = true;
+
+                yield return new WaitForSeconds(knockbackDuration);
+
+                controller.Rb.linearVelocity = Vector2.zero;
+                IsKnockedBack = false;
             }
             IEnumerator ResetKnockback()
             {
