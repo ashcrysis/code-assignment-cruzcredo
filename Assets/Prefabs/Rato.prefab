@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.EnemyAttackHitbox
   damage: 1
+  knockbackForce: 12
 --- !u!1 &3532386359096270117
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.RatEnemy
   maxHealth: 5
   detectRange: 10
-  attackRange: 3
+  attackRange: 2
   fleeDistance: 5
   attackCooldown: 1.2
   attackHitbox: {fileID: 3354641883198138728}

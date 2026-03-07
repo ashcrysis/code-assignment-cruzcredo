@@ -11,7 +11,7 @@ public class RatEnemy : MonoBehaviour
 {
     [Header("Health")]
     public int maxHealth = 5;
-    int health;
+    public int health;
 
     [Header("Detection")]
     public float detectRange = 10f;
