@@ -8,6 +8,7 @@ namespace Util
     {
         PlayerController player;
         SpriteRenderer sr;
+
         void Awake()
         {
             player = GetComponentInParent<PlayerController>();
@@ -18,6 +19,7 @@ namespace Util
         {
             sr.enabled = GameSettings.DirectionalAttack;
         }
+
         void LateUpdate()
         {
             if (!GameSettings.DirectionalAttack || player == null)
@@ -28,17 +30,22 @@ namespace Util
             if (dir == Vector2.zero)
                 return;
 
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            if (!GameSettings.DiagonalAttack)
+            {
+                if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+                    dir.y = 0;
+                else
+                    dir.x = 0;
+            }
 
+            if (dir == Vector2.zero)
+                return;
+
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
 
             Vector3 scale = transform.localScale;
-
-            if (player.transform.localScale.x < 0)
-                scale.y = -Mathf.Abs(scale.y);
-            else
-                scale.y = Mathf.Abs(scale.y);
-
+            scale.y = player.transform.localScale.x < 0 ? -Mathf.Abs(scale.y) : Mathf.Abs(scale.y);
             transform.localScale = scale;
         }
     }

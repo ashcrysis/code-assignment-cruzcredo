@@ -1,5 +1,7 @@
 using System.Collections;
 using Settings;
+using UI;
+using Util;
 using VFX;
 
 namespace Enemy
@@ -48,6 +50,42 @@ public class RatEnemy : MonoBehaviour
     bool wandering;
     
     bool isAttacking = false;
+    [Header("HP Bar")]
+    public GameObject hpBarPrefab;
+    public Transform hpBarPosition;
+    private GameObject hpBarInstance;
+
+    void Start()
+    {
+        health = maxHealth;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
+        if (hpBarPrefab != null && hpBarPosition != null)
+        {
+            GameObject canvas = GameObject.FindGameObjectWithTag("Canvas");
+            if (canvas != null && hpBarPrefab != null && hpBarPosition != null)
+            {
+                hpBarInstance = Instantiate(hpBarPrefab, canvas.transform);
+                hpBarInstance.transform.position = hpBarPosition.position;
+
+                EnemyHealthBar healthBar = hpBarInstance.GetComponentInChildren<EnemyHealthBar>();
+                if (healthBar != null)
+                    healthBar.enemy = this;
+
+                SmoothFollow follow = hpBarInstance.GetComponent<SmoothFollow>();
+                if (follow != null)
+                {
+                    follow.target = transform; 
+                    follow.offset = new Vector3(-1f, 2.2f, 0f); 
+                    follow.smoothSpeed = 50f;
+                }
+            }
+           
+        }
+    }
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -97,16 +135,6 @@ public class RatEnemy : MonoBehaviour
     {
         attackHitbox.SetActive(false);
     }
-    void Start()
-    {
-        health = maxHealth;
-
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-    }
-
     void Update()
     {
         if (isAttacking) return;
@@ -197,6 +225,7 @@ public class RatEnemy : MonoBehaviour
         if (health <= 0)
         {
             Die();
+            Destroy(hpBarInstance);
             return;
         }
 

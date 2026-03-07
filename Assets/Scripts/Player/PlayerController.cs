@@ -83,21 +83,26 @@ namespace Player
         }
         public void UpdateAttackDirection()
         {
+            Vector2 dir = LastMoveDirection;
             bool facingLeft = sr.flipX;
+
+            if (dir == Vector2.zero)
+                dir = Vector2.right;
 
             if (GameSettings.DirectionalAttack)
             {
-                Vector2 dir = LastMoveDirection;
-
-                if (dir == Vector2.zero)
-                    dir = LastMoveDirection;
+                if (!GameSettings.DiagonalAttack)
+                {
+                    if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+                        dir.y = 0;
+                    else
+                        dir.x = 0;
+                }
 
                 if (Stats.currentCombo == Stats.maxCombo && dir != Vector2.down)
                     dir = Vector2.up;
-                
 
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-
                 AttackHitbox.transform.rotation = Quaternion.Euler(0, 0, angle);
 
                 if (dir.x != 0)
@@ -106,9 +111,7 @@ namespace Player
             else
             {
                 if (Stats.currentCombo == Stats.maxCombo)
-                {
                     AttackHitbox.transform.rotation = Quaternion.Euler(0, 0, 90f);
-                }
                 else
                 {
                     float angle = facingLeft ? 180f : 0f;

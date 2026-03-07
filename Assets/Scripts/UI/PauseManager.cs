@@ -13,10 +13,12 @@ namespace UI
         bool isPaused;
 
         PlayerInput input;
+        Animator playerAnim;
 
         void Awake()
         {
-            input = FindAnyObjectByType<PlayerInput>();;
+            input = FindAnyObjectByType<PlayerInput>();
+            playerAnim = GameObject.FindWithTag("Player").GetComponent<Animator>();
         }
 
         void OnEnable()
@@ -31,7 +33,10 @@ namespace UI
 
         void OnPause(InputAction.CallbackContext ctx)
         {
-            TogglePause();
+            AnimatorStateInfo state = playerAnim.GetCurrentAnimatorStateInfo(0); 
+
+            if (!state.IsName("Victory"))
+                TogglePause();
         }
 
         public void TogglePause()

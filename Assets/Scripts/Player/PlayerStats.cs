@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Util;
 
 namespace Player
 {
@@ -58,7 +59,9 @@ namespace Player
                     return; 
 
                 currentHealth -= damage;
-
+                
+                FindAnyObjectByType<Portrait>().GetComponent<Animator>().Play("PortraitHurt");
+                
                 if (flash != null)
                     flash.Flash();
 

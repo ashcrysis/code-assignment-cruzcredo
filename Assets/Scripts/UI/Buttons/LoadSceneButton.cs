@@ -1,3 +1,4 @@
+using Settings;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ namespace UI.Buttons
 
         public void LoadGameScene()
         {
+            GameState.Paused = false;
             SceneManager.LoadScene(targetSceneName);
         }
     }
