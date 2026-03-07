@@ -23,6 +23,8 @@ namespace Player.States
             player.anim.SetBool(stateName, true);
             player.anim.SetInteger("Combo", player.Stats.currentCombo);
 
+            player.UpdateAttackDirection();
+
             timer = player.Stats.attackDuration;
 
             player.AttackHitbox.SetActive(true);

@@ -23,6 +23,11 @@ namespace Player
             public int maxCombo = 3;
 
             public float comboTimer;
+
+            public void TakeDamage(int damage)
+            {
+                throw new System.NotImplementedException();
+            }
         }
     }
 }

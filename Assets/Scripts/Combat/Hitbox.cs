@@ -1,24 +1,45 @@
+using Enemy;
 using Player.Player;
 
 namespace Combat
 {
     using UnityEngine;
 
-    public class Hitbox : MonoBehaviour
+    using System.Collections.Generic;
+    using Enemy;
+    using Player.Player;
+    using UnityEngine;
+
+    namespace Combat
     {
-        public PlayerStats Stats;
-
-        void Awake()
+        public class Hitbox : MonoBehaviour
         {
-            Stats = GetComponentInParent<PlayerStats>();
-        }
-        
-        void OnTriggerEnter2D(Collider2D other)
-        {
-            Damageable damageable = other.GetComponent<Damageable>();
+            public PlayerStats Stats;
 
-            if (damageable != null)
+            HashSet<RatEnemy> enemiesHit = new HashSet<RatEnemy>();
+            Vector2 knockbackDir;
+            void Awake()
             {
+                Stats = GetComponentInParent<PlayerStats>();
+            }
+
+            void OnEnable()
+            {
+                enemiesHit.Clear();
+            }
+
+            void OnTriggerEnter2D(Collider2D other)
+            {
+                RatEnemy enemy = other.GetComponent<RatEnemy>();
+                knockbackDir = transform.right.normalized;
+                if (enemy == null)
+                    return;
+
+                if (enemiesHit.Contains(enemy))
+                    return;
+
+                enemiesHit.Add(enemy);
+
                 int damage;
 
                 if (Stats.currentCombo == Stats.maxCombo)
@@ -26,7 +47,7 @@ namespace Combat
                 else
                     damage = Stats.attackDamage;
 
-                damageable.TakeDamage(damage);
+                enemy.TakeDamage(damage, knockbackDir);
             }
         }
     }
