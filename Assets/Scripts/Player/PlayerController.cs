@@ -53,6 +53,7 @@ namespace Player
 
         void Update()
         {
+            if (GameState.Paused) return;
             StateMachine.Update();
             Input.ResetInput();
         }

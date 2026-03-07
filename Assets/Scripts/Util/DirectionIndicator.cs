@@ -7,17 +7,17 @@ namespace Util
     public class DirectionIndicator : MonoBehaviour
     {
         PlayerController player;
-
+        SpriteRenderer sr;
         void Awake()
         {
             player = GetComponentInParent<PlayerController>();
+            sr = GetComponent<SpriteRenderer>();
         }
 
-        void Start()
+        void Update()
         {
-            gameObject.SetActive(GameSettings.DirectionalAttack);
+            sr.enabled = GameSettings.DirectionalAttack;
         }
-
         void LateUpdate()
         {
             if (!GameSettings.DirectionalAttack || player == null)

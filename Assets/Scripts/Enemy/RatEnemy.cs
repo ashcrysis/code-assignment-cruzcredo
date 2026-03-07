@@ -1,4 +1,5 @@
 using System.Collections;
+using Settings;
 using VFX;
 
 namespace Enemy
@@ -109,6 +110,7 @@ public class RatEnemy : MonoBehaviour
         if (isDead || isStunned) return;
         if (!agent.enabled || !agent.isOnNavMesh)
             return;
+        if (GameState.Paused) return;
         
         float dist = Vector2.Distance(transform.position, player.position);
 

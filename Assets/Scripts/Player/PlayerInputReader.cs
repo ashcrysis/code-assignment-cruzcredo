@@ -1,3 +1,5 @@
+using Settings;
+
 namespace Player
 {
     using UnityEngine;
@@ -28,16 +30,19 @@ namespace Player
 
         void OnMove(InputAction.CallbackContext ctx)
         {
+            if (GameState.Paused) return;
             MoveInput = ctx.ReadValue<Vector2>();
         }
 
         void OnAttack(InputAction.CallbackContext ctx)
         {
+            if (GameState.Paused) return;
             AttackPressed = true;
         }
 
         void OnDash(InputAction.CallbackContext ctx)
         {
+            if (GameState.Paused) return;
             DashPressed = true;
         }
 
