@@ -3233,10 +3233,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5386162768357866960, guid: 8f14e318c849fd148a382e8c3057c533, type: 3}
-      propertyPath: knockbackForce
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 5791557652555760734, guid: 8f14e318c849fd148a382e8c3057c533, type: 3}
       propertyPath: m_Size.x
       value: 4.41

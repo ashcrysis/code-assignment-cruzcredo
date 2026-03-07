@@ -41,6 +41,8 @@ namespace Player
             FlashTexture flash;
             Animator anim;
 
+            [Header("Invincibility")]
+            public bool IsInvincible = false;
             void Awake()
             {
                 controller = GetComponent<PlayerController>();
@@ -52,6 +54,9 @@ namespace Player
 
             public void TakeDamage(int damage, Vector2 sourcePosition)
             {
+                if (IsInvincible) 
+                    return; 
+
                 currentHealth -= damage;
 
                 if (flash != null)
@@ -60,9 +65,7 @@ namespace Player
                 ApplyKnockback(sourcePosition);
 
                 if (currentHealth <= 0)
-                {
                     Die();
-                }
             }
 
             void ApplyKnockback(Vector2 sourcePosition)

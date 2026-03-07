@@ -46,6 +46,8 @@ public class RatEnemy : MonoBehaviour
 
     float wanderTimer;
     bool wandering;
+    
+    bool isAttacking = false;
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -107,6 +109,7 @@ public class RatEnemy : MonoBehaviour
 
     void Update()
     {
+        if (isAttacking) return;
         if (isDead || isStunned) return;
         if (!agent.enabled || !agent.isOnNavMesh)
             return;
@@ -162,7 +165,7 @@ public class RatEnemy : MonoBehaviour
 
     void Attack()
     {
-        if (Time.time < lastAttackTime + attackCooldown)
+        if (Time.time < lastAttackTime + attackCooldown || isAttacking)
             return;
 
         agent.ResetPath();
@@ -175,6 +178,12 @@ public class RatEnemy : MonoBehaviour
             anim.Play("Attack2");
 
         lastAttackTime = Time.time;
+        isAttacking = true;
+    }
+
+    public void OnAttackAnimationEnd()
+    {
+        isAttacking = false;
     }
 
     public void TakeDamage(int damage, Vector2 direction)

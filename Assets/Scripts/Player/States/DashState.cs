@@ -15,6 +15,7 @@ namespace Player.States
         {
             timer = dashTime;
             dashDir = player.Input.MoveInput.normalized;
+            player.Stats.IsInvincible = true;
         }
 
         public override void Update()
@@ -27,7 +28,10 @@ namespace Player.States
             player.Rb.linearVelocity = dashDir * player.Stats.dashSpeed;
 
             if (timer <= 0)
+            {
+                player.Stats.IsInvincible = false;
                 stateMachine.ChangeState(player.IdleState);
+            }
         }
     }
 }

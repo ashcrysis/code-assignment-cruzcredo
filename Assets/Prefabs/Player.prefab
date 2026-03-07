@@ -59,6 +59,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   AttackHitbox: {fileID: 4580643275847925427}
   LastMoveDirection: {x: 1, y: 0}
+  sr: {fileID: 0}
 --- !u!50 &854958082498916107
 Rigidbody2D:
   serializedVersion: 5
@@ -200,6 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7701d6f07c80490fb635417d737df03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Player.PlayerStats
+  maxHealth: 5
+  currentHealth: 0
   moveSpeed: 10
   dashSpeed: 30
   dashDuration: 0.2
@@ -211,6 +214,9 @@ MonoBehaviour:
   currentCombo: 0
   maxCombo: 3
   comboTimer: 0
+  knockbackForce: 15
+  IsKnockedBack: 0
+  knockbackDuration: 0.2
 --- !u!212 &9112318295746963559
 SpriteRenderer:
   serializedVersion: 2
