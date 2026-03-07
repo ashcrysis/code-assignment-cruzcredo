@@ -8,6 +8,9 @@ namespace UI
     {
         Toggle toggle;
 
+        [Header("GameObject to toggle")]
+        public GameObject targetObject; 
+
         void Awake()
         {
             toggle = GetComponent<Toggle>();
@@ -16,11 +19,17 @@ namespace UI
         void Start()
         {
             toggle.isOn = GameSettings.DirectionalAttack;
+
+            if (targetObject != null)
+                targetObject.SetActive(toggle.isOn);
         }
 
         public void SetDirectionalAttack(bool value)
         {
             GameSettings.DirectionalAttack = value;
+
+            if (targetObject != null)
+                targetObject.SetActive(value); 
         }
     }
 }

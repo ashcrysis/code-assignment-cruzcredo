@@ -6,6 +6,7 @@ namespace Settings
     {
         const string DIRECTIONAL_ATTACK = "DirectionalAttack";
         const string INFINITE_WAVES = "InfiniteWaves";
+        const string DIAGONAL_ATTACK = "DiagonalAttack"; 
 
         public static bool DirectionalAttack
         {
@@ -17,6 +18,12 @@ namespace Settings
         {
             get => PlayerPrefs.GetInt(INFINITE_WAVES, 0) == 1;
             set => PlayerPrefs.SetInt(INFINITE_WAVES, value ? 1 : 0);
+        }
+
+        public static bool DiagonalAttack
+        {
+            get => PlayerPrefs.GetInt(DIAGONAL_ATTACK, 0) == 1;
+            set => PlayerPrefs.SetInt(DIAGONAL_ATTACK, value ? 1 : 0);
         }
     }
 }
