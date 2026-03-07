@@ -3361,7 +3361,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2636424321831233484, guid: 8f14e318c849fd148a382e8c3057c533, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1460747537}
+    - targetCorrespondingSourceObject: {fileID: 2636424321831233484, guid: 8f14e318c849fd148a382e8c3057c533, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 262509403097745571}
   m_SourcePrefab: {fileID: 100100000, guid: 8f14e318c849fd148a382e8c3057c533, type: 3}
+--- !u!212 &262509403097745570 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9112318295746963559, guid: 8f14e318c849fd148a382e8c3057c533, type: 3}
+  m_PrefabInstance: {fileID: 262509403097745569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &262509403097745571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460747530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d3e4a877e8498aa19f357915b3909d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFX.FlashTexture
+  sprite: {fileID: 262509403097745570}
+  flashMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+  flashTime: 0.05
 --- !u!1001 &7429274008079520143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3409,6 +3432,14 @@ PrefabInstance:
     - target: {fileID: 2907393839417138407, guid: 0644c9481c609ce4c97d8f6c9622cb78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187082818785790694, guid: 0644c9481c609ce4c97d8f6c9622cb78, type: 3}
+      propertyPath: attackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3247500635226065078, guid: 0644c9481c609ce4c97d8f6c9622cb78, type: 3}
+      propertyPath: knockbackForce
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3532386359096270117, guid: 0644c9481c609ce4c97d8f6c9622cb78, type: 3}
       propertyPath: m_Name

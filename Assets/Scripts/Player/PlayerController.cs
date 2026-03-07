@@ -114,5 +114,12 @@ namespace Player
                 }
             }
         }
+        public void ApplyKnockback(Vector2 sourcePosition, float force)
+        {
+            Vector2 direction = ((Vector2)transform.position - sourcePosition).normalized;
+
+            Rb.linearVelocity = Vector2.zero;
+            Rb.AddForce(direction * force, ForceMode2D.Impulse);
+        }
     }
 }

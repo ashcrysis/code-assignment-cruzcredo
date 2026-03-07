@@ -1,11 +1,19 @@
+using System.Collections;
+using UnityEngine.SceneManagement;
+
 namespace Player
 {
     using UnityEngine;
+    using VFX;
 
     namespace Player
     {
         public class PlayerStats : MonoBehaviour
         {
+            [Header("Health")]
+            public int maxHealth = 5;
+            public int currentHealth;
+
             [Header("Movement")]
             public float moveSpeed = 5f;
             public float dashSpeed = 12f;
@@ -24,9 +32,61 @@ namespace Player
 
             public float comboTimer;
 
-            public void TakeDamage(int damage)
+            [Header("Knockback")]
+            public float knockbackForce = 6f;
+            public float knockbackDuration = 0.2f;
+
+            PlayerController controller;
+            FlashTexture flash;
+            Animator anim;
+
+            void Awake()
             {
-                throw new System.NotImplementedException();
+                controller = GetComponent<PlayerController>();
+                flash = GetComponent<FlashTexture>();
+                anim = GetComponent<Animator>();
+
+                currentHealth = maxHealth;
+            }
+
+            public void TakeDamage(int damage, Vector2 sourcePosition)
+            {
+                currentHealth -= damage;
+
+                if (flash != null)
+                    flash.Flash();
+
+                ApplyKnockback(sourcePosition);
+
+                if (currentHealth <= 0)
+                {
+                    Die();
+                }
+            }
+
+            void ApplyKnockback(Vector2 sourcePosition)
+            {
+                Vector2 direction = ((Vector2)transform.position - sourcePosition).normalized;
+
+                controller.Rb.linearVelocity = Vector2.zero;
+                controller.Rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+                StartCoroutine(ResetKnockback());
+            }
+            IEnumerator ResetKnockback()
+            {
+                yield return new WaitForSeconds(knockbackDuration);
+
+                controller.Rb.linearVelocity = Vector2.zero;
+            }
+            void Die()
+            {
+                controller.enabled = false;
+                anim.Play("Death");
+            }
+
+            public void DeathEvent()
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }
