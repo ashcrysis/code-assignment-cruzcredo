@@ -62,6 +62,7 @@ public class RatEnemy : MonoBehaviour
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
 
         if (hpBarPrefab != null && hpBarPosition != null)
         {

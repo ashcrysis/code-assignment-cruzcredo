@@ -1,4 +1,5 @@
 using System.Collections;
+using Settings;
 using UnityEngine.SceneManagement;
 using Util;
 
@@ -51,6 +52,7 @@ namespace Player
                 anim = GetComponent<Animator>();
 
                 currentHealth = maxHealth;
+                GameState.Paused = false;
             }
 
             public void TakeDamage(int damage, Vector2 sourcePosition)

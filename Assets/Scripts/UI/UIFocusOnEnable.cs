@@ -23,9 +23,9 @@ namespace UI
         System.Collections.IEnumerator SetButtonFocus()
         {
             yield return null; 
-
+            yield return null;
             EventSystem.current.SetSelectedGameObject(null); 
-            EventSystem.current.SetSelectedGameObject(buttonToFocus.gameObject);
+            EventSystem.current.SetSelectedGameObject(buttonToFocus.gameObject, new BaseEventData(EventSystem.current));
         }
     }
 }

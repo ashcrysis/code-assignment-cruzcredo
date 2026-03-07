@@ -23,12 +23,14 @@ namespace UI
 
         void OnEnable()
         {
-            input.actions["Pause"].performed += OnPause;
+            if (input != null)
+                input.actions["Pause"].performed += OnPause;
         }
 
         void OnDisable()
         {
-            input.actions["Pause"].performed -= OnPause;
+            if (input != null)
+                input.actions["Pause"].performed -= OnPause;
         }
 
         void OnPause(InputAction.CallbackContext ctx)

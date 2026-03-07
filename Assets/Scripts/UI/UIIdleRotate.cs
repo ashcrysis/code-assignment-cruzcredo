@@ -17,7 +17,7 @@ namespace UI
         void Update()
         {
             float z = Mathf.Sin(Time.time * speed) * angle;
-            transform.rotation = startRotation * Quaternion.Euler(0f, 0f, z);
+            transform.rotation = Quaternion.Euler(0f, 0f, z);
         }
 
     }
