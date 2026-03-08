@@ -31,6 +31,8 @@ namespace Player
             public float comboResetTime = 0.5f;
             public int currentCombo = 0;
             public int maxCombo = 3;
+            public float attackCooldown = 0.2f;
+            public float comboWindowTime = 0.3f;
 
             public float comboTimer;
 
