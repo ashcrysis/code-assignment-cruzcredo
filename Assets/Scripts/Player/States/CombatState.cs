@@ -7,14 +7,16 @@ namespace Player.States
         private float attackTimer = 0f;
         private float cooldownTimer = 0f;
         private bool wantsNextAttack = false;
-
+        private float comboResetTimer = 0f;
         public CombatState(PlayerController player, PlayerStateMachine sm)
             : base(player, sm) {}
 
         public override void Enter()
         {
             player.Stop();
-
+            
+            comboResetTimer = player.Stats.comboResetTime;
+            
             player.Stats.currentCombo++;
             if (player.Stats.currentCombo > player.Stats.maxCombo)
                 player.Stats.currentCombo = 1;
@@ -43,9 +45,13 @@ namespace Player.States
 
             if (attackTimer <= 0f)
             {
-                if (wantsNextAttack && cooldownTimer <= 0f)
+                if (player.Stats.currentCombo > 0 && !wantsNextAttack)
                 {
-                    stateMachine.ChangeState(player.CombatState);
+                    comboResetTimer -= dt;
+                    if (comboResetTimer <= 0f)
+                    {
+                        player.Stats.currentCombo = 0;
+                    }
                 }
                 else
                 {
