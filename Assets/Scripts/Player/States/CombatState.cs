@@ -13,7 +13,7 @@ namespace Player.States
         {
             player.Stop();
 
-            player.AttackHitbox.SetActive(false);
+            //player.AttackHitbox.SetActive(false);
 
             player.Stats.currentCombo++;
 
@@ -27,7 +27,7 @@ namespace Player.States
 
             timer = player.Stats.attackDuration;
 
-            player.AttackHitbox.SetActive(true);
+            //player.AttackHitbox.SetActive(true);
 
             player.Stats.comboTimer = player.Stats.comboResetTime;
         }
@@ -45,14 +45,14 @@ namespace Player.States
 
             if (player.Input.AttackPressed && player.Stats.comboTimer > 0)
             {
-                player.AttackHitbox.SetActive(false);
+                //player.AttackHitbox.SetActive(false);
                 stateMachine.ChangeState(player.CombatState);
                 return;
             }
 
             if (timer <= 0)
             {
-                player.AttackHitbox.SetActive(false);
+                //player.AttackHitbox.SetActive(false);
                 stateMachine.ChangeState(player.IdleState);
             }
         }
