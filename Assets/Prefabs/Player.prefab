@@ -53,13 +53,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2af4a56d434418b44cfe24ba9c1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  Stats: {fileID: 0}
+  Stats: {fileID: 5386162768357866960}
   Rb: {fileID: 854958082498916107}
   Input: {fileID: 7687003136783810161}
-  anim: {fileID: 0}
+  anim: {fileID: 7062547636275928799}
   AttackHitbox: {fileID: 4580643275847925427}
   LastMoveDirection: {x: 1, y: 0}
-  sr: {fileID: 0}
+  sr: {fileID: 9112318295746963559}
 --- !u!50 &854958082498916107
 Rigidbody2D:
   serializedVersion: 5
@@ -208,7 +208,8 @@ MonoBehaviour:
   dashDuration: 0.2
   attackDamage: 1
   comboDamage: 2
-  maxComboAttacks: 3
+  lastAttackTime: 0
+  attackCooldown: 0
   attackDuration: 0.5
   comboResetTime: 0.45
   currentCombo: 0
