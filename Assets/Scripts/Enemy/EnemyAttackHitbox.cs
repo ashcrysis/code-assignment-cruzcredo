@@ -8,9 +8,19 @@ namespace Enemy
     public class EnemyAttackHitbox : MonoBehaviour
     {
         public int damage = 1;
-        public float knockbackForce = 6f;
+
+        bool hasHit;
+
+        void OnEnable()
+        {
+            hasHit = false;
+        }
+
         void OnTriggerEnter2D(Collider2D other)
         {
+            if (hasHit)
+                return;
+
             if (other.CompareTag("PlayerHitbox"))
             {
                 PlayerStats stats = other.GetComponentInParent<PlayerStats>();
@@ -18,6 +28,7 @@ namespace Enemy
                 if (stats != null)
                 {
                     stats.TakeDamage(damage, transform.position);
+                    hasHit = true;
                 }
             }
         }

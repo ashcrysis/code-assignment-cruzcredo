@@ -68,7 +68,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.12, y: 0}
-  m_Radius: 2
+  m_Radius: 3
 --- !u!114 &3247500635226065078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +82,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.EnemyAttackHitbox
   damage: 1
-  knockbackForce: 12
 --- !u!1 &3532386359096270117
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,9 +278,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.RatEnemy
   maxHealth: 5
-  health: 0
+  health: 5
   detectRange: 14
-  attackRange: 2
+  attackRange: 4
   fleeDistance: 3
   attackCooldown: 1.2
   attackHitbox: {fileID: 3354641883198138728}
