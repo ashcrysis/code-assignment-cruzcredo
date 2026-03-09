@@ -1,4 +1,5 @@
 using System.Collections;
+using Player.States;
 using Settings;
 using UnityEngine.SceneManagement;
 using Util;
@@ -27,12 +28,9 @@ namespace Player
             public int maxComboAttacks = 2;
 
             [Header("Timing")]
-            public float attackDuration = 0.3f;
-            public float comboResetTime = 0.5f;
             public int currentCombo = 0;
             public int maxCombo = 3;
-            public float attackCooldown = 0.2f;
-            public float comboWindowTime = 0.3f;
+            public float comboWindowTime = 0.15f;
 
             public float comboTimer;
 
@@ -44,7 +42,7 @@ namespace Player
             PlayerController controller;
             FlashTexture flash;
             Animator anim;
-
+            private PlayerStateMachine stateMachine; 
             [Header("Invincibility")]
             public bool IsInvincible = false;
             void Awake()
@@ -52,18 +50,23 @@ namespace Player
                 controller = GetComponent<PlayerController>();
                 flash = GetComponent<FlashTexture>();
                 anim = GetComponent<Animator>();
-
+                
                 currentHealth = maxHealth;
                 GameState.Paused = false;
             }
 
+            void Start()
+            {
+                stateMachine = controller.StateMachine;
+            }
             public void TakeDamage(int damage, Vector2 sourcePosition)
             {
                 if (IsInvincible) 
                     return; 
 
                 currentHealth -= damage;
-                
+                anim.SetBool("DMG",true);
+                stateMachine.ChangeState(controller.IdleState);
                 FindAnyObjectByType<Portrait>().GetComponent<Animator>().Play("PortraitHurt");
                 
                 if (flash != null)
@@ -92,6 +95,7 @@ namespace Player
 
                 controller.Rb.linearVelocity = Vector2.zero;
                 IsKnockedBack = false;
+                anim.SetBool("DMG",false);
             }
             IEnumerator ResetKnockback()
             {
@@ -102,7 +106,7 @@ namespace Player
             void Die()
             {
                 controller.enabled = false;
-                anim.Play("Death");
+                anim.SetBool("Death",true);
             }
 
             public void DeathEvent()

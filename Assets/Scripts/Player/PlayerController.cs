@@ -126,9 +126,9 @@ namespace Player
             Rb.linearVelocity = Vector2.zero;
             Rb.AddForce(direction * force, ForceMode2D.Impulse);
         }
-        public void OnAttackAnimationEnd()
+        public void OpenComboWindow()
         {
-            CombatState?.OnAttackAnimationEnd();
+            CombatState?.OpenComboWindow();
         }
     }
 }

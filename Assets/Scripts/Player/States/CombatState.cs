@@ -1,67 +1,71 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Player.States
 {
     public class CombatState : PlayerState
     {
-        private float attackTimer = 0f;
-        private float cooldownTimer = 0f;
-        private bool wantsNextAttack = false;
-        private float comboResetTimer = 0f;
+        bool comboWindowOpen = false;
+        bool wantsNextAttack = false;
+
         public CombatState(PlayerController player, PlayerStateMachine sm)
             : base(player, sm) {}
 
         public override void Enter()
         {
             player.Stop();
-            
-            comboResetTimer = player.Stats.comboResetTime;
-            
+
             player.Stats.currentCombo++;
+
             if (player.Stats.currentCombo > player.Stats.maxCombo)
                 player.Stats.currentCombo = 1;
-            
+
             player.anim.SetInteger("Combo", player.Stats.currentCombo);
             player.anim.SetBool(stateName, true);
 
             player.UpdateAttackDirection();
 
-            attackTimer = player.Stats.attackDuration;
-            cooldownTimer = player.Stats.attackCooldown;
             wantsNextAttack = false;
+            comboWindowOpen = false;
         }
+
         public override void Update()
         {
-            float dt = Time.deltaTime;
-
-            attackTimer -= dt;
-            cooldownTimer -= dt;
-
-            if (player.Input.AttackPressed)
+            if (comboWindowOpen && player.Input.AttackPressed)
             {
-                if (attackTimer <= player.Stats.comboWindowTime)
-                    wantsNextAttack = true;
+                wantsNextAttack = true;
             }
 
-            if (attackTimer <= 0f)
+            AnimatorStateInfo state = player.anim.GetCurrentAnimatorStateInfo(0);
+
+            if (!comboWindowOpen && state.normalizedTime >= 1f)
             {
-                if (player.Stats.currentCombo > 0 && !wantsNextAttack)
-                {
-                    comboResetTimer -= dt;
-                    if (comboResetTimer <= 0f)
-                    {
-                        player.Stats.currentCombo = 0;
-                    }
-                }
-                else
-                {
-                    stateMachine.ChangeState(player.IdleState);
-                }
+                player.Stats.currentCombo = 0;
+                stateMachine.ChangeState(player.IdleState);
             }
         }
-        public void OnAttackAnimationEnd()
+
+        public void OpenComboWindow()
         {
-            attackTimer = 0f; 
+            comboWindowOpen = true;
+            player.StartCoroutine(ComboWindowRoutine());
+        }
+
+        IEnumerator ComboWindowRoutine()
+        {
+            yield return new WaitForSeconds(player.Stats.comboWindowTime);
+
+            comboWindowOpen = false;
+
+            if (wantsNextAttack)
+            {
+                stateMachine.ChangeState(player.CombatState);
+            }
+            else
+            {
+                player.Stats.currentCombo = 0;
+                stateMachine.ChangeState(player.IdleState);
+            }
         }
 
         public override void Exit()
