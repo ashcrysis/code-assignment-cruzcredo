@@ -280,15 +280,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.RatEnemy
   maxHealth: 5
   health: 0
-  detectRange: 10
+  detectRange: 14
   attackRange: 2
-  fleeDistance: 5
+  fleeDistance: 3
   attackCooldown: 1.2
   attackHitbox: {fileID: 3354641883198138728}
   knockbackForce: 5
   stunTime: 0.2
   wanderRadius: 5
-  idleChance: 0.4
+  idleChance: 0.2
   wanderWaitTime: 2
   hpBarPrefab: {fileID: 3241923200275475654, guid: 40d85a8382a552548af4c6651879e286, type: 3}
   hpBarPosition: {fileID: 1939883090825818098}
