@@ -107,6 +107,7 @@ public class RatEnemy : MonoBehaviour
     }
     void Wander()
     {
+        if (isDead || isStunned) return;
         wanderTimer -= Time.deltaTime;
 
         if (wanderTimer > 0)
@@ -171,12 +172,14 @@ public class RatEnemy : MonoBehaviour
 
     void Idle()
     {
+        if (isDead || isStunned) return;
         anim.Play("Idle");
         agent.ResetPath();
     }
 
     void Chase()
     {
+        if (isDead || isStunned) return;
         if (!agent.enabled || !agent.isOnNavMesh) return;
         anim.Play("Idle");
         agent.SetDestination(player.position);
@@ -184,6 +187,7 @@ public class RatEnemy : MonoBehaviour
 
     void Flee()
     {
+        if (isDead || isStunned) return;
         anim.Play("Idle");
 
         Vector3 dir = (transform.position - player.position).normalized;
@@ -194,6 +198,7 @@ public class RatEnemy : MonoBehaviour
 
     void Attack()
     {
+        if (isDead || isStunned) return;
         if (Time.time < lastAttackTime + attackCooldown || isAttacking)
             return;
 
