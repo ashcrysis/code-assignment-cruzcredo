@@ -217,12 +217,9 @@ MonoBehaviour:
   attackDamage: 1
   comboDamage: 2
   maxComboAttacks: 2
-  attackDuration: 0.5
-  comboResetTime: 0.45
   currentCombo: 0
   maxCombo: 3
-  attackCooldown: 1
-  comboWindowTime: 0.3
+  comboWindowTime: 0.15
   comboTimer: 0
   knockbackForce: 15
   IsKnockedBack: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e3ccb304e147cab0a29001fae53c19, type: 3}
   m_Name: GameSettingsSO
   m_EditorClassIdentifier: Assembly-CSharp::Settings.ScriptableObjects.GameSettingsSO
-  DirectionalAttack: 1
+  DirectionalAttack: 0
   DiagonalAttack: 1
   InfiniteWaves: 0
   overridePlayerPrefs: 1

@@ -14,7 +14,7 @@ namespace Player.States
         public override void Enter()
         {
             timer = dashTime;
-            dashDir = player.Input.MoveInput.normalized;
+            dashDir = player.LastMoveDirection;
             player.Stats.IsInvincible = true;
         }
 
@@ -30,6 +30,7 @@ namespace Player.States
             if (timer <= 0)
             {
                 player.Stats.IsInvincible = false;
+                player.Rb.linearVelocity =  Vector2.zero;
                 stateMachine.ChangeState(player.IdleState);
             }
         }
