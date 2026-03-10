@@ -279,7 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.RatEnemy
   maxHealth: 5
   health: 5
-  detectRange: 14
+  detectRange: 25
   attackRange: 4
   fleeDistance: 3
   attackCooldown: 1.2
