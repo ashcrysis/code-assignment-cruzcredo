@@ -147,7 +147,7 @@ public class RatEnemy : MonoBehaviour
         
         float dist = Vector2.Distance(transform.position, player.position);
 
-        if (dist <= attackRange)
+        if (dist <= attackRange && !isStunned )
         {
             Attack();
             Flip();
