@@ -11,6 +11,7 @@ namespace UI.Buttons
         public void LoadGameScene()
         {
             GameState.Paused = false;
+            Time.timeScale = 1f;
             SceneManager.LoadScene(targetSceneName);
         }
     }

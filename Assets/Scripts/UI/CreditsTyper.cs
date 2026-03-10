@@ -23,6 +23,7 @@ namespace UI
         {
             string fullText = fixedStart + "\n\n" + typingText;
 
+            
             textUI.text = fullText;
             textUI.maxVisibleCharacters = 0;
 
@@ -33,9 +34,9 @@ namespace UI
                 char c = fullText[i];
 
                 if (c == '!' || c == '?' || c == ',' || c == '.' || c == ':')
-                    yield return new WaitForSeconds(punctuationDelay);
+                    yield return new WaitForSecondsRealtime(punctuationDelay);
                 else
-                    yield return new WaitForSeconds(charDelay);
+                    yield return new WaitForSecondsRealtime(charDelay);
             }
         }
     }
