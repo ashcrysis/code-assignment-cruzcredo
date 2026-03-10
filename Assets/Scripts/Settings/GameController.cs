@@ -1,4 +1,5 @@
 using Player;
+using Player.Player;
 
 namespace Settings
 {
@@ -12,8 +13,8 @@ public class GameController : MonoBehaviour
 {
     [Header("Player")]
     public GameObject player; 
-    public float safeDistance = 5f; 
-
+    public float safeDistance = 5f;
+    public PlayerStats playerStats;
     [Header("Enemies")]
     public GameObject enemyPrefab;
     public int enemiesPerWave = 3; 
@@ -26,11 +27,15 @@ public class GameController : MonoBehaviour
     private int currentWave = 0;
     private List<GameObject> activeEnemies = new List<GameObject>();
     private Animator playerAnimator;
+    
+    
 
     void Start()
     {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
+        if (playerStats == null)
+            playerStats = player.GetComponent<PlayerStats>();
 
         playerAnimator = player.GetComponent<Animator>();
 
@@ -76,7 +81,7 @@ public class GameController : MonoBehaviour
             }
 
             currentWave++;
-        
+            playerStats.currentHealth = playerStats.maxHealth;
         }
 
         if (!GameSettings.InfiniteWaves)

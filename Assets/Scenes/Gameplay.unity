@@ -1535,6 +1535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Settings.GameController
   player: {fileID: 1460747530}
   safeDistance: 5
+  playerStats: {fileID: 0}
   enemyPrefab: {fileID: 3532386359096270117, guid: 0644c9481c609ce4c97d8f6c9622cb78, type: 3}
   enemiesPerWave: 2
   spawnRadius: 10
